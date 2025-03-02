@@ -6,6 +6,7 @@
 \alias{.pval.cronbachAlpha}
 \alias{estName.cronbachAlpha}
 \alias{note_.cronbachAlpha}
+\alias{Sprintf.cronbachAlpha}
 \title{S3 methods for \code{cronbachAlpha}}
 \usage{
 endpoint.cronbachAlpha(x)
@@ -15,11 +16,13 @@ endpoint.cronbachAlpha(x)
 estName.cronbachAlpha(x)
 
 note_.cronbachAlpha(x)
+
+Sprintf.cronbachAlpha(x)
 }
 \arguments{
 \item{x}{an object of class \code{'cronbachAlpha'},
 returned from function \link[ltm]{cronbach.alpha}}
 }
 \description{
-S3 methods for \code{cronbachAlpha}
+Additional S3 methods for \code{'cronbachAlpha'} (\code{cibeta}).
 }

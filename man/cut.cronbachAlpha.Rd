@@ -25,8 +25,8 @@ An S3 method dispatch of generic function \link[base]{cut}.
 }
 \examples{
 library(ltm)
-cronbach.alpha(LSAT, CI = TRUE, B = 500) |>
- cut()
+m = cronbach.alpha(LSAT, CI = TRUE, B = 500) 
+m |> cut()
 }
 \references{
 \url{https://www.researchgate.net/figure/Range-of-reliability-and-its-coefficient-of-Cronbachs-alpha_tbl1_326698967}

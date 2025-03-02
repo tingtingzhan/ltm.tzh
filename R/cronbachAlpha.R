@@ -3,10 +3,11 @@
 # methods(class = 'cronbachAlpha') 
 # only ?ltm:::print.cronbachAlpha
 
-#' @importFrom stats coef
+#' @importFrom stats coef setNames
 # @export coef.cronbachAlpha
 #' @export
-coef.cronbachAlpha <- function(object, ...) object$alpha
+coef.cronbachAlpha <- function(object, ...) setNames(object$alpha, nm = object$name)
+
 
 #' @importFrom stats confint
 # @export confint.cronbachAlpha
@@ -14,7 +15,7 @@ coef.cronbachAlpha <- function(object, ...) object$alpha
 confint.cronbachAlpha <- function(object, ...) {
   ci <- object$ci
   if (!length(ci)) stop('re-run ltm::cronbach.alpha with CI = TRUE')
-  return(ci) # no need to turn to `dim = 1:2` 'matrix'
+  array(ci, dim = 1:2, dimnames = list(object$name, names(ci)))
 }
 
 #' @importFrom stats nobs
@@ -35,8 +36,8 @@ nobs.cronbachAlpha <- function(object, ...) object[['n']]
 #' 
 #' @examples
 #' library(ltm)
-#' cronbach.alpha(LSAT, CI = TRUE, B = 500) |>
-#'  cut()
+#' m = cronbach.alpha(LSAT, CI = TRUE, B = 500) 
+#' m |> cut()
 #' @references
 #' \url{https://www.researchgate.net/figure/Range-of-reliability-and-its-coefficient-of-Cronbachs-alpha_tbl1_326698967}
 #' @export cut.cronbachAlpha
@@ -57,7 +58,10 @@ cut.cronbachAlpha <- function(
 
 
 
-#' @title S3 methods for `cronbachAlpha`
+#' @title S3 methods for `cronbachAlpha` 
+#' 
+#' @description
+#' Additional S3 methods for `'cronbachAlpha'` (`cibeta`).
 #' 
 #' @param x an object of class `'cronbachAlpha'`, 
 #' returned from function \link[ltm]{cronbach.alpha}
@@ -65,12 +69,13 @@ cut.cronbachAlpha <- function(
 #' @name S3_cronbachAlpha
 #' @export endpoint.cronbachAlpha
 #' @export
-endpoint.cronbachAlpha <- function(x) 'Questionaire'
+endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 
 #' @rdname S3_cronbachAlpha
+#' @importFrom stats setNames
 #' @export .pval.cronbachAlpha
 #' @export
-.pval.cronbachAlpha <- function(x) NA_real_
+.pval.cronbachAlpha <- function(x) setNames(NA_real_, nm = x$name)
 
 #' @rdname S3_cronbachAlpha
 #' @export estName.cronbachAlpha
@@ -78,35 +83,15 @@ endpoint.cronbachAlpha <- function(x) 'Questionaire'
 estName.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 #' @rdname S3_cronbachAlpha
+#' @export note_.cronbachAlpha
 #' @export
 note_.cronbachAlpha <- function(x) x |> cut.cronbachAlpha() |> as.character.factor()
 
 
-#cibeta.cronbachAlpha <- function(object, ...) {
-#  
-#  new(
-#    Class = 'cibeta', 
-#    betap = array(cbind(object$alpha, NA_real_), dim = 1:2, dimnames = list(object$name, NULL)),
-#    null.value = NA_real_,
-#    CI = list('.95' = array(object$ci, dim = 1:2)),
-#    estName = 'Cronbach\'s \u03b1',
-#    note = as.character(cut.cronbachAlpha(object$alpha)),
-#    nobs = sprintf(fmt = 'n=%d', object$n),
-#    endpoint = 'Questionaire'
-#  )  
-#  
-#}
-
-
-
-#' @title Sprintf.cronbachAlpha
-#' 
-#' @param model ..
-#' 
-#' @param ... ..
-#' 
+#' @rdname S3_cronbachAlpha
+#' @export Sprintf.cronbachAlpha
 #' @export
-Sprintf.cronbachAlpha <- function(model, ...) {
+Sprintf.cronbachAlpha <- function(x) {
   'Cronbach\'s $\\alpha$ is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.
   The levels are unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, excellent $(\\alpha\\geq.9)$.'
 }
@@ -122,7 +107,6 @@ Sprintf.cronbachAlpha <- function(model, ...) {
 #' 
 #' @export
 rmd_.cronbachAlpha <- function(x, xnm, ...) {
-  
   return(c(
     Sprintf.cronbachAlpha(),
     '```{r results = \'asis\'}', 
@@ -130,40 +114,7 @@ rmd_.cronbachAlpha <- function(x, xnm, ...) {
     '```', 
     '<any-text>'
   ))
-  
 }
 
-
-# @export
-#cibeta.cronbachAlpha_list <- function(object, ...) {
-#  nm1 <- names(object)
-#  nm2 <- unname(vapply(object, FUN = `[[`, 'name', FUN.VALUE = NA_character_))
-#  if (!length(nm1)) {
-#    nm <- nm2
-#  } else if (all(nzchar(nm1))) {
-#    nm <- nm1
-#  } else {
-#    nm <- nm1
-#    nm[id] <- nm2[id <- !nzchar(nm1)]
-#  }
-  
-#  ret <- do.call(rbind.cibeta, args = lapply(object, FUN = cibeta.cronbachAlpha))
-#  rownames(ret@betap) <- nm
-#  return(ret)
-#}
-
-
-
-# @export rmd_.cronbachAlpha_list
-# @export
-#rmd_.cronbachAlpha_list <- function(x, xnm, ...) {
-#  return(c(
-#    Sprintf.cronbachAlpha(),
-#    '```{r results = \'asis\'}', 
-#    sprintf(fmt = 'as_flextable.cibeta(cibeta.cronbachAlpha_list(%s))', xnm),
-#    '```', 
-#    '<any-text>'
-#  ))
-#}
 
 
