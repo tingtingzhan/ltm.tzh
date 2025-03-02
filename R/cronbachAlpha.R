@@ -4,10 +4,12 @@
 # only ?ltm:::print.cronbachAlpha
 
 #' @importFrom stats coef
+# @export coef.cronbachAlpha
 #' @export
 coef.cronbachAlpha <- function(object, ...) object$alpha
 
 #' @importFrom stats confint
+# @export confint.cronbachAlpha
 #' @export
 confint.cronbachAlpha <- function(object, ...) {
   ci <- object$ci
@@ -16,6 +18,7 @@ confint.cronbachAlpha <- function(object, ...) {
 }
 
 #' @importFrom stats nobs
+# @export nobs.cronbachAlpha
 #' @export
 nobs.cronbachAlpha <- function(object, ...) object[['n']]
   
@@ -60,14 +63,17 @@ cut.cronbachAlpha <- function(
 #' returned from function \link[ltm]{cronbach.alpha}
 #' 
 #' @name S3_cronbachAlpha
+#' @export endpoint.cronbachAlpha
 #' @export
 endpoint.cronbachAlpha <- function(x) 'Questionaire'
 
 #' @rdname S3_cronbachAlpha
+#' @export .pval.cronbachAlpha
 #' @export
 .pval.cronbachAlpha <- function(x) NA_real_
 
 #' @rdname S3_cronbachAlpha
+#' @export estName.cronbachAlpha
 #' @export
 estName.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
