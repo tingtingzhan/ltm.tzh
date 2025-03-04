@@ -4,7 +4,7 @@
 \alias{S3_cronbachAlpha}
 \alias{endpoint.cronbachAlpha}
 \alias{.pval.cronbachAlpha}
-\alias{estName.cronbachAlpha}
+\alias{estnm.cronbachAlpha}
 \alias{note_.cronbachAlpha}
 \alias{Sprintf.cronbachAlpha}
 \title{S3 methods for \code{cronbachAlpha}}
@@ -13,7 +13,7 @@ endpoint.cronbachAlpha(x)
 
 .pval.cronbachAlpha(x)
 
-estName.cronbachAlpha(x)
+estnm.cronbachAlpha(x)
 
 note_.cronbachAlpha(x)
 

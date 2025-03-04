@@ -67,29 +67,24 @@ cut.cronbachAlpha <- function(
 #' returned from function \link[ltm]{cronbach.alpha}
 #' 
 #' @name S3_cronbachAlpha
-#' @export endpoint.cronbachAlpha
 #' @export
 endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 
 #' @rdname S3_cronbachAlpha
 #' @importFrom stats setNames
-#' @export .pval.cronbachAlpha
 #' @export
 .pval.cronbachAlpha <- function(x) setNames(NA_real_, nm = x$name)
 
 #' @rdname S3_cronbachAlpha
-#' @export estName.cronbachAlpha
 #' @export
-estName.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
+estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 #' @rdname S3_cronbachAlpha
-#' @export note_.cronbachAlpha
 #' @export
 note_.cronbachAlpha <- function(x) x |> cut.cronbachAlpha() |> as.character.factor()
 
 
 #' @rdname S3_cronbachAlpha
-#' @export Sprintf.cronbachAlpha
 #' @export
 Sprintf.cronbachAlpha <- function(x) {
   'Cronbach\'s $\\alpha$ is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.
