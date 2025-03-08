@@ -71,11 +71,6 @@ cut.cronbachAlpha <- function(
 endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 
 #' @rdname S3_cronbachAlpha
-#' @importFrom stats setNames
-#' @export
-.pval.cronbachAlpha <- function(x) setNames(NA_real_, nm = x$name)
-
-#' @rdname S3_cronbachAlpha
 #' @export
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
@@ -92,24 +87,6 @@ Sprintf.cronbachAlpha <- function(x) {
 }
 
 
-#' @title rmd_.cronbachAlpha
-#' 
-#' @param x ..
-#' 
-#' @param xnm ..
-#' 
-#' @param ... ..
-#' 
-#' @export
-rmd_.cronbachAlpha <- function(x, xnm, ...) {
-  return(c(
-    Sprintf.cronbachAlpha(),
-    '```{r results = \'asis\'}', 
-    sprintf(fmt = 'as_flextable.cibeta(cibeta(%s))', xnm),
-    '```', 
-    '<any-text>'
-  ))
-}
 
 
 
