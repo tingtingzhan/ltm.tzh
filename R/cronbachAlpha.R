@@ -74,9 +74,9 @@ endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 #' @export
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
-#' @rdname S3_cronbachAlpha
-#' @export
-note_.cronbachAlpha <- function(x) x |> cut.cronbachAlpha() |> as.character.factor()
+# @rdname S3_cronbachAlpha
+# @export
+#note_.cronbachAlpha <- function(x) x |> cut.cronbachAlpha() |> as.character.factor()
 
 
 #' @rdname S3_cronbachAlpha

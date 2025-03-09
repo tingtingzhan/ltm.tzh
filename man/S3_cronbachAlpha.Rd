@@ -4,15 +4,12 @@
 \alias{S3_cronbachAlpha}
 \alias{endpoint.cronbachAlpha}
 \alias{estnm.cronbachAlpha}
-\alias{note_.cronbachAlpha}
 \alias{Sprintf.cronbachAlpha}
 \title{S3 methods for \code{cronbachAlpha}}
 \usage{
 endpoint.cronbachAlpha(x)
 
 estnm.cronbachAlpha(x)
-
-note_.cronbachAlpha(x)
 
 Sprintf.cronbachAlpha(x)
 }
