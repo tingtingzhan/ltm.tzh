@@ -19,7 +19,6 @@ confint.cronbachAlpha <- function(object, ...) {
 }
 
 #' @importFrom stats nobs
-# @export nobs.cronbachAlpha
 #' @export
 nobs.cronbachAlpha <- function(object, ...) object[['n']]
   
@@ -73,11 +72,6 @@ endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 #' @rdname S3_cronbachAlpha
 #' @export
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
-
-# @rdname S3_cronbachAlpha
-# @export
-#note_.cronbachAlpha <- function(x) x |> cut.cronbachAlpha() |> as.character.factor()
-
 
 #' @rdname S3_cronbachAlpha
 #' @export
