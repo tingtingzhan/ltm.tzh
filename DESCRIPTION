@@ -14,4 +14,4 @@ Language: en-US
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.4.0)
-Suggests: ltm
+Suggests: ltm (== 1.2.0)
