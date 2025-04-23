@@ -3,7 +3,6 @@ Type: Package
 Title: Extensions for ltm
 Version: 0.1.0
 Date: 2024-01-15
-Maintainer: Tingting Zhan <tingtingzhan@gmail.com>
 Description: To extend rpart package.
 License: GPL-2
 Encoding: UTF-8
