@@ -31,27 +31,24 @@ nobs.cronbachAlpha <- function(object, ...) object[['n']]
 #' @param x an object of class `'cronbachAlpha'`, 
 #' returned from function \link[ltm]{cronbach.alpha}
 #' 
-#' @param breaks,labels,right,include.lowest,ordered_result,... see function \link[base]{cut.default}
+#' @param ordered_result see function \link[base]{cut.default}
+#' 
+#' @param ... S3 method dispatch place holder, not used
 #' 
 #' @examples
 #' library(ltm)
-#' m = cronbach.alpha(LSAT, CI = TRUE, B = 500) 
-#' m |> cut()
+#' cronbach.alpha(LSAT, CI = TRUE, B = 500) |> cut()
 #' @references
 #' \url{https://www.researchgate.net/figure/Range-of-reliability-and-its-coefficient-of-Cronbachs-alpha_tbl1_326698967}
 #' @export cut.cronbachAlpha
 #' @export
-cut.cronbachAlpha <- function(
-    x,
-    breaks = c(-Inf, 5:9/10, Inf), 
-    labels = c('unacceptable', 'poor', 'questionable', 'acceptable', 'good', 'excellent'),
-    right = FALSE, include.lowest = TRUE, ordered_result = TRUE,
-    ...
-) {
+cut.cronbachAlpha <- function(x, ordered_result = TRUE, ...) {
   cut.default(
-    x$alpha, breaks = breaks, labels = labels, 
-    right = right, include.lowest = include.lowest, 
-    ordered_result = ordered_result, ...
+    x$alpha, 
+    breaks = c(-Inf, 5:9/10, Inf), 
+    labels = c('unacceptable', 'poor', 'questionable', 'acceptable', 'good', 'excellent'), 
+    right = FALSE, include.lowest = TRUE, 
+    ordered_result = ordered_result
   )
 }
 
@@ -60,7 +57,7 @@ cut.cronbachAlpha <- function(
 #' @title S3 methods for `cronbachAlpha` 
 #' 
 #' @description
-#' Additional S3 methods for `'cronbachAlpha'` (`cibeta`).
+#' Additional S3 methods for `'cronbachAlpha'`.
 #' 
 #' @param x an object of class `'cronbachAlpha'`, 
 #' returned from function \link[ltm]{cronbach.alpha}
@@ -74,11 +71,26 @@ endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 #' @rdname S3_cronbachAlpha
+#' @importFrom utils bibentry toBibtex
 #' @export
 Sprintf.cronbachAlpha <- function(x) {
-  'Cronbach\'s $\\alpha$ is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.
-  The levels are unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, excellent $(\\alpha\\geq.9)$.'
+  ret <- 'Cronbach\'s $\\alpha$ [@Cronbach51], categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.'
+  bib <- bibentry(
+    bibtype = 'article', key = 'Cronbach51', 
+    title = 'Coefficient alpha and the internal structure of tests',
+    author = 'Lee J. Cronbach',
+    year = '1951',
+    journal = 'Psychometrika',
+    pages = '297--334',
+    volume = '16',
+    number = '3',
+    doi = '10.1007/BF02310555'
+  )
+  attr(ret, which = 'Bibtex') <- bib |> toBibtex()
+  return(ret)
 }
+
+
 
 
 

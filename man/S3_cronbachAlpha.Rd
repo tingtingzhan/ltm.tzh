@@ -18,5 +18,5 @@ Sprintf.cronbachAlpha(x)
 returned from function \link[ltm]{cronbach.alpha}}
 }
 \description{
-Additional S3 methods for \code{'cronbachAlpha'} (\code{cibeta}).
+Additional S3 methods for \code{'cronbachAlpha'}.
 }
