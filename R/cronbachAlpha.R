@@ -71,11 +71,11 @@ endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 #' @rdname S3_cronbachAlpha
-#' @importFrom utils bibentry toBibtex
+#' @importFrom utils bibentry
 #' @export
 Sprintf.cronbachAlpha <- function(x) {
   ret <- 'Cronbach\'s $\\alpha$ [@Cronbach51], categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.'
-  bib <- bibentry(
+  attr(ret, which = 'bibentry') <- bibentry(
     bibtype = 'article', key = 'Cronbach51', 
     title = 'Coefficient alpha and the internal structure of tests',
     author = 'Lee J. Cronbach',
@@ -86,7 +86,6 @@ Sprintf.cronbachAlpha <- function(x) {
     number = '3',
     doi = '10.1007/BF02310555'
   )
-  attr(ret, which = 'Bibtex') <- bib |> toBibtex()
   return(ret)
 }
 
