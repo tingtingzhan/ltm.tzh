@@ -2,8 +2,7 @@ Package: ltm.tzh
 Type: Package
 Title: Extensions for ltm
 Version: 0.1.0
-Date: 2025-04-28
-Description: To extend rpart package.
+Description: To extend ltm package.
 License: GPL-2
 Encoding: UTF-8
 Authors@R: c(person(given = "Tingting", family = "Zhan", role =
@@ -13,4 +12,5 @@ Language: en-US
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.5.0)
+Imports: rmd.tzh
 Suggests: ltm (== 1.2.0)

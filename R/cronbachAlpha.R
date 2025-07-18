@@ -91,6 +91,45 @@ Sprintf.cronbachAlpha <- function(x) {
 
 
 
+#' @title md_.cronbachAlpha
+#' 
+#' @param x an object of class `'cronbachAlpha'`, 
+#' returned from function \link[ltm]{cronbach.alpha}
+#' 
+#' @param xnm ..
+#' 
+#' @param ... ..
+#' 
+#' @examples
+#' library(rmd.tzh); library(ltm); list(
+#'  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
+#' ) |> render_(file = 'cronbachAlpha')
+#' @keywords internal
+#' @importFrom rmd.tzh md_
+#' @export md_.cronbachAlpha
+#' @export
+md_.cronbachAlpha <- function(x, xnm, ...) {
+  
+  return(list(
+    
+    Sprintf.cronbachAlpha(), 
+    
+    c(
+      '```{r}',
+      sprintf(fmt = '%s |> print()', xnm),
+      # ltm:::print.cronbachAlpha
+      '```', 
+      '<any-text>'
+    ),
+    
+    
+    '\n\n' # would never hurt !!
+    
+  ))
+  
+}
+
+
 
 
 
