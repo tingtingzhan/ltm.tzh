@@ -2,7 +2,7 @@
 % Please edit documentation in R/cronbachAlpha.R
 \name{md_.cronbachAlpha}
 \alias{md_.cronbachAlpha}
-\title{md_.cronbachAlpha}
+\title{\code{\link[=md_.cronbachAlpha]{md_.cronbachAlpha()}}}
 \usage{
 \method{md_}{cronbachAlpha}(x, xnm, ...)
 }
@@ -15,10 +15,10 @@ returned from function \link[ltm]{cronbach.alpha}}
 \item{...}{..}
 }
 \description{
-md_.cronbachAlpha
+\code{\link[=md_.cronbachAlpha]{md_.cronbachAlpha()}}
 }
 \examples{
-library(rmd.tzh); library(ltm); list(
+library(rmd.tzh); list(
  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
 ) |> render_(file = 'cronbachAlpha')
 }

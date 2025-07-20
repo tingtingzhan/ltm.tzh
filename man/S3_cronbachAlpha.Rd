@@ -4,14 +4,11 @@
 \alias{S3_cronbachAlpha}
 \alias{endpoint.cronbachAlpha}
 \alias{estnm.cronbachAlpha}
-\alias{Sprintf.cronbachAlpha}
 \title{S3 methods for \code{cronbachAlpha}}
 \usage{
 endpoint.cronbachAlpha(x)
 
 estnm.cronbachAlpha(x)
-
-Sprintf.cronbachAlpha(x)
 }
 \arguments{
 \item{x}{an object of class \code{'cronbachAlpha'},

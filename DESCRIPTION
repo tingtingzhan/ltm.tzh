@@ -11,6 +11,5 @@ Authors@R: c(person(given = "Tingting", family = "Zhan", role =
 Language: en-US
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
-Depends: R (>= 4.5.0)
-Imports: rmd.tzh
-Suggests: ltm (== 1.2.0)
+Depends: R (>= 4.5.0), ltm (== 1.2.0)
+Imports: methods, rmd.tzh
