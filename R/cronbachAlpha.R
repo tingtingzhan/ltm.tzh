@@ -89,9 +89,9 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' @param ... ..
 #' 
 #' @examples
-#' library(rmd.tzh); list(
+#' list(
 #'  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-#' ) |> render_(file = 'cronbachAlpha')
+#' ) |> rmd.tzh::render_(file = 'cronbachAlpha')
 #' @keywords internal
 #' @importFrom rmd.tzh md_
 #' @importClassesFrom rmd.tzh md_lines
@@ -102,7 +102,7 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 md_.cronbachAlpha <- function(x, xnm, ...) {
   
   attr(x, which = 'text') <- '@Cronbach51\'s $\\alpha$, categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
-    new(Class = 'md_lines', bibentry = bibentry(
+    new(Class = 'md_lines', package = 'ltm', bibentry = bibentry(
       bibtype = 'article', key = 'Cronbach51', 
       title = 'Coefficient alpha and the internal structure of tests',
       author = 'Lee J. Cronbach',

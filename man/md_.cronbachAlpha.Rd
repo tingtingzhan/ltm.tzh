@@ -18,8 +18,8 @@ returned from function \link[ltm]{cronbach.alpha}}
 \code{\link[=md_.cronbachAlpha]{md_.cronbachAlpha()}}
 }
 \examples{
-library(rmd.tzh); list(
+list(
  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-) |> render_(file = 'cronbachAlpha')
+) |> rmd.tzh::render_(file = 'cronbachAlpha')
 }
 \keyword{internal}
