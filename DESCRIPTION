@@ -12,4 +12,4 @@ Language: en-US
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.5.0), ltm (== 1.2.0)
-Imports: methods, rmd.tzh
+Imports: methods, rmd.tzh, ecip

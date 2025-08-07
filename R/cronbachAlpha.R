@@ -63,10 +63,15 @@ cut.cronbachAlpha <- function(x, ordered_result = TRUE, ...) {
 #' returned from function \link[ltm]{cronbach.alpha}
 #' 
 #' @name S3_cronbachAlpha
+#' @keywords internal
+#' @importFrom ecip endpoint
+#' @export endpoint.cronbachAlpha
 #' @export
 endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 
 #' @rdname S3_cronbachAlpha
+#' @importFrom ecip estnm
+#' @export estnm.cronbachAlpha
 #' @export
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
@@ -89,13 +94,14 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' ) |> render_(file = 'cronbachAlpha')
 #' @keywords internal
 #' @importFrom rmd.tzh md_
+#' @importClassesFrom rmd.tzh md_lines
 #' @importFrom methods new
 #' @importFrom utils bibentry
 #' @export md_.cronbachAlpha
 #' @export
 md_.cronbachAlpha <- function(x, xnm, ...) {
   
-  z1 <- 'Cronbach\'s $\\alpha$ [@Cronbach51], categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
+  attr(x, which = 'text') <- '@Cronbach51\'s $\\alpha$, categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
     new(Class = 'md_lines', bibentry = bibentry(
       bibtype = 'article', key = 'Cronbach51', 
       title = 'Coefficient alpha and the internal structure of tests',
@@ -107,17 +113,9 @@ md_.cronbachAlpha <- function(x, xnm, ...) {
       number = '3',
       doi = '10.1007/BF02310555'
     ))
-    
-  z2 <- c(
-    '```{r}',
-    sprintf(fmt = '%s |> print()', xnm),
-    # ltm:::print.cronbachAlpha
-    '```'
-  ) |> 
-    new(Class = 'md_lines')
   
-  c(z1, z2) # ?rmd.tzh::c.md_lines  
-
+  NextMethod(generic = 'md_') # rmd.tzh::md_.default()
+  
 }
 
 

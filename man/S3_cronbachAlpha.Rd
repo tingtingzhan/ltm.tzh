@@ -6,9 +6,9 @@
 \alias{estnm.cronbachAlpha}
 \title{S3 methods for \code{cronbachAlpha}}
 \usage{
-endpoint.cronbachAlpha(x)
+\method{endpoint}{cronbachAlpha}(x)
 
-estnm.cronbachAlpha(x)
+\method{estnm}{cronbachAlpha}(x)
 }
 \arguments{
 \item{x}{an object of class \code{'cronbachAlpha'},
@@ -17,3 +17,4 @@ returned from function \link[ltm]{cronbach.alpha}}
 \description{
 Additional S3 methods for \code{'cronbachAlpha'}.
 }
+\keyword{internal}
