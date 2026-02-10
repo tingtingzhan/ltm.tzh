@@ -9,7 +9,7 @@ Authors@R: c(person(given = "Tingting", family = "Zhan", role =
        c("aut", "cre"), email =
        c("tingtingzhan@gmail.com")))
 Language: en-US
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.5.0), ltm (== 1.2.0)
-Imports: methods, rmd.tzh, ecip
+Imports: methods, fastmd, ecip

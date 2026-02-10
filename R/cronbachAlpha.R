@@ -91,10 +91,10 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' @examples
 #' list(
 #'  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-#' ) |> rmd.tzh::render_(file = 'cronbachAlpha')
+#' ) |> fastmd::render_(file = 'cronbachAlpha')
 #' @keywords internal
-#' @importFrom rmd.tzh md_
-#' @importClassesFrom rmd.tzh md_lines
+#' @importFrom fastmd md_
+#' @importClassesFrom fastmd md_lines
 #' @importFrom methods new
 #' @importFrom utils bibentry
 #' @export md_.cronbachAlpha
@@ -114,7 +114,7 @@ md_.cronbachAlpha <- function(x, xnm, ...) {
       doi = '10.1007/BF02310555'
     ))
   
-  NextMethod(generic = 'md_') # rmd.tzh::md_.default()
+  NextMethod(generic = 'md_') # fastmd::md_.default()
   
 }
 
