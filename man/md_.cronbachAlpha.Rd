@@ -19,7 +19,7 @@ returned from function \link[ltm]{cronbach.alpha}}
 }
 \examples{
 list(
- cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
+ LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
 ) |> fastmd::render_(file = 'cronbachAlpha')
 }
 \keyword{internal}

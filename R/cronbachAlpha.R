@@ -90,29 +90,39 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' 
 #' @examples
 #' list(
-#'  cronbachAlpha = cronbach.alpha(LSAT, CI = TRUE, B = 500)
+#'  LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
 #' ) |> fastmd::render_(file = 'cronbachAlpha')
 #' @keywords internal
 #' @importFrom fastmd md_
 #' @importClassesFrom fastmd md_lines
 #' @importFrom methods new
-#' @importFrom utils bibentry
 #' @export md_.cronbachAlpha
 #' @export
 md_.cronbachAlpha <- function(x, xnm, ...) {
   
-  attr(x, which = 'text') <- '@Cronbach51\'s $\\alpha$, categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
-    new(Class = 'md_lines', package = 'ltm', bibentry = bibentry(
-      bibtype = 'article', key = 'Cronbach51', 
-      title = 'Coefficient alpha and the internal structure of tests',
-      author = 'Lee J. Cronbach',
-      year = '1951',
-      journal = 'Psychometrika',
-      pages = '297--334',
-      volume = '16',
-      number = '3',
-      doi = '10.1007/BF02310555'
-    ))
+  lev <- c(
+    'unacceptable $(\\alpha<.5)$', 
+    'poor $(.5\\leq\\alpha<.6)$', 
+    'questionable $(.6\\leq\\alpha<.7)$', 
+    'acceptable $(.7\\leq\\alpha<.8)$', 
+    'good $(.8\\leq\\alpha<.9)$', 
+    'excellent $(\\alpha\\geq.9)$'
+  )
+  
+  id <- x |>
+    cut.cronbachAlpha() |>
+    unclass()
+  
+  lev[id] <- lev[id] |>
+    sprintf(fmt = '[%s]{style=\"background-color: #FFFF00\"}')
+  
+  attr(x, which = 'text') <- lev |>
+    paste(collapse = ', ') |>
+    sprintf(fmt = '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%%27s_alpha), categorized into %s, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.') |>
+    new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
+  
+  #attr(x, which = 'text') <- '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%27s_alpha), categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
+  #  new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
   
   NextMethod(generic = 'md_') # fastmd::md_.default()
   
