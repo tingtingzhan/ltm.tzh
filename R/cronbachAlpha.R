@@ -91,7 +91,7 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' @examples
 #' list(
 #'  LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-#' ) |> fastmd::render_(file = 'cronbachAlpha')
+#' ) |> fastmd::render2html(file = 'cronbachAlpha')
 #' @keywords internal
 #' @importFrom fastmd md_
 #' @importClassesFrom fastmd md_lines
