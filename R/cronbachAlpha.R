@@ -91,11 +91,10 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 #' @examples
 #' list(
 #'  LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-#' ) |> fastmd::render2html(file = 'cronbachAlpha')
+#' ) |> fastmd::render2html()
 #' @keywords internal
-#' @importFrom fastmd md_
+#' @importFrom fastmd md_ md_.default
 #' @importClassesFrom fastmd md_lines
-#' @importFrom methods new
 #' @export md_.cronbachAlpha
 #' @export
 md_.cronbachAlpha <- function(x, xnm, ...) {
@@ -116,15 +115,14 @@ md_.cronbachAlpha <- function(x, xnm, ...) {
   lev[id] <- lev[id] |>
     sprintf(fmt = '[%s]{style=\"background-color: #FFFF00\"}')
   
-  attr(x, which = 'text') <- lev |>
+  z1 <- lev |>
     paste(collapse = ', ') |>
     sprintf(fmt = '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%%27s_alpha), categorized into %s, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.') |>
     new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
   
-  #attr(x, which = 'text') <- '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%27s_alpha), categorized into unacceptable $(\\alpha<.5)$, poor $(.5\\leq\\alpha<.6)$, questionable $(.6\\leq\\alpha<.7)$, acceptable $(.7\\leq\\alpha<.8)$, good $(.8\\leq\\alpha<.9)$, and excellent $(\\alpha\\geq.9)$, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.' |>
-  #  new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
+  z2 <- md_.default(x = x, xnm = xnm, ...)
   
-  NextMethod(generic = 'md_') # fastmd::md_.default()
+  c(z1, z2)
   
 }
 
