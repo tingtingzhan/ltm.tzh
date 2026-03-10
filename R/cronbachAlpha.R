@@ -3,6 +3,20 @@
 # methods(class = 'cronbachAlpha') 
 # only ?ltm:::print.cronbachAlpha
 
+
+#' @title `cronbachAlpha` Object
+#' 
+#' @examples
+#' list(
+#'  LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
+#' ) |> fastmd::render2html()
+#' 
+#' @name cronbachAlpha
+NULL
+
+
+
+
 #' @importFrom stats coef setNames
 # @export coef.cronbachAlpha
 #' @export
@@ -54,24 +68,11 @@ cut.cronbachAlpha <- function(x, ordered_result = TRUE, ...) {
 
 
 
-#' @title S3 methods for `cronbachAlpha` 
-#' 
-#' @description
-#' Additional S3 methods for `'cronbachAlpha'`.
-#' 
-#' @param x an object of class `'cronbachAlpha'`, 
-#' returned from function \link[ltm]{cronbach.alpha}
-#' 
-#' @name S3_cronbachAlpha
-#' @keywords internal
 #' @importFrom ecip endpoint
-#' @export endpoint.cronbachAlpha
 #' @export
 endpoint.cronbachAlpha <- function(x) quote(Questionaire)
 
-#' @rdname S3_cronbachAlpha
 #' @importFrom ecip estnm
-#' @export estnm.cronbachAlpha
 #' @export
 estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
@@ -79,23 +80,8 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 
 
-#' @title [md_.cronbachAlpha()]
-#' 
-#' @param x an object of class `'cronbachAlpha'`, 
-#' returned from function \link[ltm]{cronbach.alpha}
-#' 
-#' @param xnm ..
-#' 
-#' @param ... ..
-#' 
-#' @examples
-#' list(
-#'  LSAT = cronbach.alpha(LSAT, CI = TRUE, B = 500)
-#' ) |> fastmd::render2html()
-#' @keywords internal
-#' @importFrom fastmd md_ md_.default
+#' @importFrom fastmd md_ md_print_
 #' @importClassesFrom fastmd md_lines
-#' @export md_.cronbachAlpha
 #' @export
 md_.cronbachAlpha <- function(x, xnm, ...) {
   
@@ -120,7 +106,7 @@ md_.cronbachAlpha <- function(x, xnm, ...) {
     sprintf(fmt = '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%%27s_alpha), categorized into %s, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.') |>
     new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
   
-  z2 <- md_.default(x = x, xnm = xnm, ...)
+  z2 <- md_print_(x = x, xnm = xnm, ...)
   
   c(z1, z2)
   
