@@ -81,7 +81,7 @@ estnm.cronbachAlpha <- function(x) 'Cronbach\'s \u03b1'
 
 
 #' @importFrom fastmd md_ md_int
-#' @importClassesFrom fastmd md_lines
+#' @importClassesFrom fastmd md
 #' @export
 md_.cronbachAlpha <- function(x, xnm, ...) {
   
@@ -104,7 +104,7 @@ md_.cronbachAlpha <- function(x, xnm, ...) {
   z1 <- lev |>
     paste(collapse = ', ') |>
     sprintf(fmt = '[@Cronbach51\'s $\\alpha$](https://en.wikipedia.org/wiki/Cronbach%%27s_alpha), categorized into %s, is calculated using <u>**`R`**</u> package <u>**`ltm`**</u>.') |>
-    new(Class = 'md_lines', package = 'ltm', bibentry = .cronbach51())
+    new(Class = 'md', package = 'ltm', bibentry = .cronbach51())
   
   z2 <- md_int(x = x, xnm = xnm, engine = 'print', ...)
   
